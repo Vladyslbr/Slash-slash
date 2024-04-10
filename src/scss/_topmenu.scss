@@ -1,0 +1,41 @@
+.top {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+
+    &-menu {
+        display: flex;
+        justify-content: space-between;
+
+        &-detail-name {
+            width: 90px;
+        }
+    }
+}
+
+.top-menu-btn-back {
+    @include button-common();
+
+    &:hover {
+        @include button-common-hover;
+    }
+}
+
+.top-menu-btn-remove {
+    @include button-common($width: 100px);
+
+    &:hover {
+        @include button-common-hover;
+    }
+}
+
+.top-menu-btn-permanent-remove {
+    @include button-common($width: 100px);
+    width: 145px;
+    border: 1px solid $delete-color;
+
+    &:hover {
+        @include button-common-hover;
+        background-color: $delete-color;
+    }
+}

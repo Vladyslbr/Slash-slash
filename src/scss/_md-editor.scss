@@ -1,0 +1,46 @@
+.wmde-markdown {
+    --color-canvas-default: #101010 !important;
+}
+
+.w-md-editor-text-pre > code,
+.w-md-editor-text-input {
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+
+.wmde-markdown > p {
+    @extend %font-common-regular;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    word-spacing: normal !important;
+}
+
+.w-md-editor {
+    width: 60vw;
+    //height: auto;
+    --md-editor-box-shadow-color: #777;
+
+    & button {
+        height: auto !important;
+        margin: 0 3px !important;
+    }
+
+    & svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    &-toolbar {
+        background-color: #101010;
+        border-color: #777;
+    }
+
+    &-content {
+        background-color: #111;
+    }
+
+    &-fullscreen {
+        width: 100vw;
+        height: 100% !important;
+    }
+}

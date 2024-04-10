@@ -1,0 +1,59 @@
+@import "fonts";
+@import "global-commons";
+@import "header";
+@import "normalize";
+@import "topmenu";
+@import "page-loading";
+
+.main {
+    $content-width: calc(100vw - 8vw);
+
+    &__wrapper-bin {
+        width: $content-width;
+        height: 100%;
+        margin: 40px auto;
+    }
+
+    .top {
+        &-menu {
+            display: flex;
+            justify-content: space-between;
+
+            & > div:nth-child(2) {
+                order: 3;
+            }
+
+            @media (max-width: $tablet-view-width) {
+                flex-direction: column-reverse;
+                row-gap: 30px;
+
+                & > div {
+                    align-self: center;
+                }
+
+                &-categories {
+                    &__wrapper-tags {
+                        max-width: 100%;
+                    }
+                }
+            }
+
+            @media (max-width: $tablet-view-width) {
+                flex-direction: column-reverse;
+                align-items: baseline;
+                row-gap: 30px;
+
+                &__wrapper-add-note-sort {
+                    justify-content: space-between;
+                    width: 100%;
+                }
+
+                &-categories {
+                    &__wrapper-tags {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

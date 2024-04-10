@@ -1,0 +1,12 @@
+.page-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32vh;
+
+    p {
+        @extend %font-common-medium;
+        font-size: 20px;
+        color: white;
+    }
+}

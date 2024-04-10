@@ -1,0 +1,68 @@
+$jetbrains-font-path: "../../public/fonts/jetbrains";
+
+// regular
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-Regular.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-Italic.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-Bold.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-BoldItalic.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: bold;
+    font-style: italic;
+}
+
+// medium
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-Medium.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-MediumItalic.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: 500;
+    font-style: italic;
+}
+
+// extra bold
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-ExtraBold.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("#{$jetbrains-font-path}/JetBrainsMono-ExtraBoldItalic.ttf")
+        format("truetype");
+    font-family: "JetBrains Mono";
+    font-weight: 800;
+    font-style: italic;
+}

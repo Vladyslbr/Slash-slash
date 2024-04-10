@@ -1,0 +1,215 @@
+@mixin tag-input {
+    outline: none;
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+    @extend %font-common-regular;
+    color: black;
+    //flex: 1;
+    min-width: 5px;
+    margin-bottom: 1px;
+    padding-left: 5px;
+}
+@mixin tag-confirm {
+    @include icon-btn;
+    padding: 3px;
+    cursor: pointer;
+
+    &:hover {
+        path {
+            stroke: white;
+        }
+        rect {
+            fill-opacity: 0.5;
+        }
+    }
+}
+
+@mixin tag__remove {
+    @include icon-btn;
+    cursor: pointer;
+
+    &:hover {
+        path {
+            fill: white;
+        }
+        rect {
+            fill-opacity: 0.5;
+        }
+    }
+}
+
+@mixin edit-tag {
+    @include icon-btn;
+    cursor: pointer;
+
+    .edit-tag-icon {
+        @include icon-btn;
+
+        &:hover {
+            path {
+                fill: white;
+            }
+            rect {
+                fill-opacity: 0.5;
+            }
+        }
+    }
+
+    input {
+        display: none;
+    }
+
+    .edit-tag__confirm {
+        display: none;
+    }
+}
+
+@mixin edit-tag-active {
+    @extend %tag-small-common;
+    background: aqua;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+
+    @extend %tag-common;
+    padding: 3px;
+
+    .edit-tag-icon {
+        display: none;
+    }
+
+    input {
+        @include tag-input;
+    }
+
+    .edit-tag__confirm {
+        @include tag-confirm;
+    }
+}
+
+.tag {
+    @extend %tag-small-common;
+
+    .tag__remove {
+        display: none;
+    }
+
+    .edit-tag {
+        display: none;
+    }
+
+    &-active,
+    &:hover {
+        @extend %tag-small-common;
+        background: aqua;
+        display: flex;
+        align-items: center;
+        padding: 3px;
+
+        .tag__remove {
+            @include tag__remove;
+        }
+
+        span {
+            margin: 0 10px 0 10px;
+        }
+
+        .edit-tag {
+            @include edit-tag;
+        }
+    }
+
+    &-input {
+        .tag__remove {
+            display: none;
+        }
+
+        span {
+            display: none;
+        }
+
+        .edit-tag {
+            @include edit-tag-active;
+        }
+    }
+
+    &-category {
+        @extend %tag-big-common;
+    }
+
+    &-text-category {
+        @extend %font-common-medium;
+        font-size: 15px !important;
+        padding: 2px 8px;
+    }
+
+    &__remove-category {
+        &:hover {
+            path {
+                fill: white;
+            }
+            rect {
+                fill: red;
+                fill-opacity: 0.95 !important;
+            }
+        }
+    }
+}
+
+.tags-hide {
+    @include icon-btn;
+    cursor: pointer;
+
+    &:hover {
+        path {
+            fill: aqua;
+        }
+    }
+}
+
+.rotate-180 {
+    transform: rotate(30deg);
+    transition: transform 0.3s ease;
+}
+
+.add-tag {
+    .add-tag-icon {
+        @extend %tag-common;
+        padding: 4px 7px;
+    }
+
+    input {
+        display: none;
+    }
+
+    &__confirm {
+        display: none;
+    }
+
+    &-active {
+        @extend %tag-common;
+        background: aqua;
+        display: flex;
+        align-items: center;
+        padding: 3px;
+
+        .add-tag-icon {
+            display: none;
+        }
+
+        input {
+            @include tag-input;
+        }
+
+        .add-tag__confirm {
+            @include tag-confirm;
+        }
+    }
+}
+
+.tooltip {
+    @extend %font-common-regular;
+    font-size: 12px !important;
+}

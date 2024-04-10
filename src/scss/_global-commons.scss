@@ -1,0 +1,108 @@
+%font-common-regular {
+    color: #fff;
+    font-family: JetBrains Mono;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+%font-common-medium {
+    color: #000;
+    font-family: JetBrains Mono;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@mixin border-background {
+    border-radius: 7px;
+    border: 1px solid #777;
+    background: #101010;
+}
+
+@mixin border-background-blue {
+    border-radius: 7px;
+    border: 1px solid #42f2f7;
+    background: #101010;
+}
+
+@mixin icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%tag-common {
+    display: flex;
+    border-radius: 7px;
+    background: #46acc2;
+    cursor: pointer;
+
+    span {
+        @extend %font-common-medium;
+        line-height: 12px;
+        margin-bottom: 1px;
+        text-align: center;
+    }
+
+    &:hover {
+        background-color: #42f2f7;
+    }
+}
+
+%tag-small-common {
+    @extend %tag-common;
+    padding: 4px 7px;
+}
+
+%tag-big-common {
+    @extend %tag-common;
+    padding: 4px 10px;
+}
+
+@mixin button-common-hover {
+    border: 1px solid white;
+
+    // div[class^="icon-"] {
+    //     path {
+    //         fill: aqua;
+    //     }
+    // }
+}
+
+@mixin button-common(
+    $gap: 10px,
+    $padding: 0 1px,
+    $width: 88px,
+    $heigth: 32px,
+    $font-size: 14px
+) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include border-background;
+
+    gap: $gap;
+    padding: $padding;
+    width: $width;
+    height: $heigth;
+
+    cursor: pointer;
+
+    div[class^="icon-"] {
+        @include icon-btn;
+    }
+
+    span {
+        @extend %font-common-regular;
+        text-align: center;
+        font-size: $font-size;
+    }
+}
+
+$mobile-view-width: 670px;
+$tablet-view-width: 1140px;
+
+$delete-color: #ff0000cb;

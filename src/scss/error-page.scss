@@ -1,0 +1,35 @@
+@import "fonts";
+@import "global-commons";
+@import "header";
+@import "normalize";
+@import "topmenu";
+@import "page-loading";
+
+.ErrorPage {
+    &-asciiStyle {
+        @extend %font-common-regular;
+        color: #777;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1;
+        overflow: auto;
+        padding: 1rem;
+        white-space: pre;
+        margin-top: 10vh;
+        margin-bottom: 5vh;
+    }
+
+    & h1 {
+        @extend %font-common-medium;
+        text-align: center;
+        color: #fff;
+        font-size: 24px;
+    }
+
+    & p {
+        @extend %font-common-regular;
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+    }
+}

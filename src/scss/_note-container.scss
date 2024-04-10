@@ -1,0 +1,168 @@
+%info-items {
+    margin-top: 15px;
+}
+
+.note-container {
+    @include border-background;
+    border-radius: 35px;
+    box-sizing: content-box;
+    margin: 1rem 0.25em;
+    height: 450px;
+    //max-width: 280px;
+    width: 250px;
+    justify-content: center;
+    padding: 25px 25px 15px 25px;
+    color: white;
+
+    &-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & a {
+            overflow: scroll;
+        }
+
+        & > a {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            height: 100%;
+            flex-wrap: wrap;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+        }
+
+        &__tags {
+            @extend %info-items;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        &__bottom {
+        }
+    }
+
+    &-text {
+        @extend %font-common-regular;
+        overflow-y: scroll;
+        //border: white solid;
+        font-size: 13px;
+        height: 100%;
+    }
+
+    &-separator {
+        @extend %info-items;
+        width: 100%;
+        height: 1px;
+        background: #777;
+    }
+
+    & .error {
+        @extend %font-common-regular;
+        color: aqua !important;
+        display: flex;
+        text-align: center;
+        font-size: 12px !important;
+    }
+
+    &-date {
+        @extend %info-items;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            @extend %font-common-regular;
+            color: #b7b7b7;
+            font-size: 12px;
+        }
+    }
+
+    &-btn-bin {
+        @extend %info-items;
+        @include icon-btn;
+        cursor: pointer;
+
+        &:hover {
+            path {
+                fill: white;
+            }
+        }
+    }
+
+    &-btn-restore {
+        @include icon-btn;
+        cursor: pointer;
+        margin-bottom: 8px;
+        margin-top: 15px;
+
+        &:hover {
+            path {
+                fill: aqua;
+            }
+        }
+    }
+
+    &-btn-delete {
+        @include icon-btn;
+        cursor: pointer;
+        margin-bottom: 15px;
+
+        &:hover {
+            path {
+                fill: $delete-color;
+            }
+        }
+    }
+
+    &:hover {
+        @include border-background-blue;
+        border-radius: 35px;
+
+        .note-container-separator {
+            @extend %info-items;
+            width: 100%;
+            height: 1px;
+            background: #42f2f7;
+        }
+
+        .note-container-add-tag {
+            display: flex;
+        }
+    }
+
+    @media (max-width: $mobile-view-width) {
+        height: auto;
+        max-height: 300px;
+        max-width: 380px;
+
+        &__wrapper {
+            //height: auto;
+        }
+
+        &-add-tag {
+            display: flex;
+        }
+    }
+
+    @media (max-width: 961px) {
+        &-add-tag {
+            display: flex;
+        }
+    }
+}
