@@ -2,13 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../redux/store";
-
 import "../scss/main.scss";
 import {
    Content,
    AddNoteBtn,
    SortTopBar,
-   CategoriesTopBar,
+   Categories,
 } from "../components";
 import ErrorPage from "./ErrorPage";
 import { selectData } from "../redux/data/selectors";
@@ -18,16 +17,18 @@ import { getData } from "../redux/data/base";
 import { makeParse, makeUrl } from "../utils";
 
 const Home = () => {
-   const dispatch = useAppDispatch();
 
+   // Redux setup
+   const dispatch = useAppDispatch();
+   const { error } = useSelector(selectData);
+   const { category, sort, searchValue, urlParams } = useSelector(selectFilter);
+
+   // Navigation and URL parsing setup
+   const navigate = useNavigate();
    const isSearch = React.useRef(false);
    const isMounted = React.useRef(false);
 
-   const navigate = useNavigate();
-
-   const { error } = useSelector(selectData);
-
-   const { category, sort, searchValue, urlParams } = useSelector(selectFilter);
+   // Parse URL parameters on component mount
    React.useEffect(() => {
       if (window.location.search) {
          makeParse(dispatch);
@@ -35,20 +36,24 @@ const Home = () => {
       }
    }, [dispatch]);
 
+   // Update URL parameters and fetch data when filter changes
    React.useEffect(() => {
       if (!isSearch.current) {
+         // Generate URL and update Redux state
          makeUrl({ sort, category, searchValue, bin: false, dispatch });
+         // Reset bin filter
          dispatch(setBin(false));
+         // Fetch data based on filters
          dispatch(getData());
       }
       isSearch.current = false;
    }, [sort, category, searchValue, dispatch]);
 
+   // Navigate to updated URL when filters change
    React.useEffect(() => {
       if (isMounted.current && urlParams) {
          navigate(`?${urlParams}`);
       }
-
       isMounted.current = true;
    }, [sort, category, searchValue, urlParams, navigate]);
 
@@ -57,13 +62,13 @@ const Home = () => {
    }
 
    return (
-      <div className="main__wrapper">
-         <div className="topbar">
+      <div className="main__wrapper" data-testid="main__wrapper">
+         <div className="topbar" data-testid="topbar">
             <div className="topbar__wrapper-add-note-sort">
                <AddNoteBtn />
                <SortTopBar />
             </div>
-            <CategoriesTopBar />
+            <Categories />
          </div>
          <Content />
       </div>

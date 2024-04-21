@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "../redux/store";
+import { useAppDispatch } from "../../redux/store";
 
-import { deleteNotes } from "../redux/data/base";
+import { deleteNotes } from "../../redux/data/base";
 
 export const BackBtn = ({ binStatus }: { binStatus?: boolean }) => {
    return (

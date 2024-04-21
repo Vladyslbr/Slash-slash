@@ -2,15 +2,17 @@ import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 
 import { AppDispatch, RootState } from "../store";
 import { NoteType, TagType } from "../../types";
-import { handleErrors } from "./utils";
+import { getDemonstrationData, handleErrors } from "./utils";
 import { db } from "../../db";
 import { setActiveCategory } from "../filter/slice";
+import { checkDbExistance } from "../../db/utils";
 
 // Fetching data
 
 export const getData = createAsyncThunk<[NoteType[], TagType[]], void, { state: RootState }>(
     "data/getData",
     async (_, { getState, rejectWithValue }) => {
+        let notes: NoteType[], tags: TagType[];
         const { category, sort, searchValue, bin } = getState().filter;
         const reverseOrder = sort.sortProp2 === "asc" ? false : true;
         const orderByCreated = sort.sortProp1 === "created" ? true : false;
@@ -21,15 +23,21 @@ export const getData = createAsyncThunk<[NoteType[], TagType[]], void, { state: 
             tagName: category,
             textSearch: searchValue
         };
-        try {
-            const [notes,tags] = await Promise.all([
-                db.getNotes(params),
-                db.getTags({})
-            ]);
-            return [notes,tags];
-        } catch (error: any) {
-            return handleErrors(error, rejectWithValue, "Error while getting data");
+        const dbExistance = await checkDbExistance();
+        if (dbExistance) {
+            try {
+                [notes, tags] = await Promise.all([
+                    db.getNotes(params),
+                    db.getTags({})
+                ]);
+            } catch (error: any) {
+                return handleErrors(error, rejectWithValue, "Error while getting data");
+            };
+        } else {
+            [notes, tags] = getDemonstrationData();
+            await db.setData({ notes, tags });
         };
+        return [notes,tags];
     },
 );
 

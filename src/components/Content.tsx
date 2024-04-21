@@ -15,9 +15,10 @@ export const Content: React.FC<ContentProps> = ({ noteType = "" }) => {
    return (
       <div className="notes-content">
          {status === Status.LOADING
-            ? [...new Array(6)].map((_, index) => (
-                 <NoteContainerSkeleton key={index} />
-              ))
+            // ? [...new Array(6)].map((_, index) => (
+            //      <NoteContainerSkeleton key={index} />
+            //   ))
+            ? <></>
             : status === Status.SUCCESS
               ? notes.map((note: NoteType) => (
                    <NoteContainer

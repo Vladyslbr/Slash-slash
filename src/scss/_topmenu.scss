@@ -13,6 +13,15 @@
     }
 }
 
+.note-top-menu {
+    display: flex;
+    justify-content: space-between;
+
+    &-detail-name {
+        width: 90px;
+    }
+}
+
 .top-menu-btn-back {
     @include button-common();
 

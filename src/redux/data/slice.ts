@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DataSliceType, NoteType, Status } from "../../types";
+import { DataSliceType, NoteType, Status, TagType } from "../../types";
 import { deleteNote, deleteNotes, deleteTag, getData, getNote, getTags, patchNote, patchTag, postNote, postTag } from "./base";
 
-const initialState: DataSliceType = {
+export const initialState: DataSliceType = {
     notes: [],
     tags: [],
     selectedNote: null,
@@ -17,6 +17,15 @@ const dataSlice = createSlice({
     reducers: {
         setSelectedNote(state, action: PayloadAction<NoteType | null>) {
             state.selectedNote = action.payload;
+        },
+        setNotes(state, action: PayloadAction<NoteType[]>) {
+            state.notes = action.payload;
+        },
+        setTags(state, action: PayloadAction<TagType[]>) {
+            state.tags = action.payload;
+        },
+        setStatus(state, action: PayloadAction<Status>) {
+            state.status = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -127,6 +136,6 @@ const dataSlice = createSlice({
     }
 });
 
-export const { setSelectedNote } = dataSlice.actions;
+export const { setSelectedNote, setNotes, setTags, setStatus } = dataSlice.actions;
 
 export default dataSlice.reducer;

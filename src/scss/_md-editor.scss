@@ -43,4 +43,8 @@
         width: 100vw;
         height: 100% !important;
     }
+
+    @media (max-width: $mobile-view-width) {
+        width: 90vw;
+    }
 }

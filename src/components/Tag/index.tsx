@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../redux/store";
+import { useAppDispatch } from "../../redux/store";
 
-import { selectFilter } from "../redux/filter/selectors";
-import { setActiveCategory } from "../redux/filter/slice";
-import { deleteTag, getTag } from "../redux/data/base";
-import { TagType } from "../types";
-import { SubmitTag } from "./";
+import { selectFilter } from "../../redux/filter/selectors";
+import { setActiveCategory } from "../../redux/filter/slice";
+import { deleteTag, getTag } from "../../redux/data/base";
+import { TagType } from "../../types";
+import { SubmitTag } from "./SubmitTag";
 
 type TagProps = {
    tag?: TagType;
@@ -107,3 +107,6 @@ export const Tag: React.FC<TagProps> = ({
       </div>
    );
 };
+
+export * from "./SubmitTag";
+export * from "./TagsActions";

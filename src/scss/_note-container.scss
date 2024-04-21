@@ -148,8 +148,9 @@
 
     @media (max-width: $mobile-view-width) {
         height: auto;
-        max-height: 300px;
-        max-width: 380px;
+        max-height: 340px;
+        min-width: 85vw;
+        max-width: 90vw;
 
         &__wrapper {
             //height: auto;

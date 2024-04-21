@@ -26,6 +26,15 @@ class Database extends Dexie {
     this.tags = this.table("tags");
   };
 
+  // Set data
+
+  async setData({ notes, tags }: { notes: NoteType[], tags: TagType[] }) {
+    await Promise.all([
+      this.notes.bulkAdd(notes),
+      this.tags.bulkAdd(tags)
+    ]);
+  };
+
   // Notes operations
 
   addNote(id: string): Promise<string> {

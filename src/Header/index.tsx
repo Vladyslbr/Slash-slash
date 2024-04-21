@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../assets/images/slash-logo.svg";
+//import logo from "../assets/images/slash-logo.svg";
 import { Link } from "react-router-dom";
 import HeaderSearch from "./HeaderSearch";
 
@@ -13,7 +13,11 @@ const Header = () => {
                   className="header__wrapper-logo-message"
                >
                   <div className="header-logo">
-                     <img src={logo} alt="" className="logo" />
+                     {/* <img src={logo} alt="" className="logo" /> */}
+                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7381 0H7.44048H7.14286H6.84524H6.54762L0 25H0.595252H0.892857H1.19048H2.38097H2.97619H4.16667L10.7143 0H10.119H9.52381H8.92857H8.33333H7.7381Z" fill="#42F2F7"/>
+<path d="M22.0238 0H21.7262H21.4286H21.1309H20.8333L14.2857 25H14.881H15.1786H15.4762H16.6667H17.2619H18.4524L25 0H24.4048H23.8095H23.2143H22.619H22.0238Z" fill="#42F2F7"/>
+</svg>
                   </div>
                   <div className="header-message">
                      <p>Local-storage notes</p>
@@ -55,7 +59,7 @@ const Header = () => {
                         </svg>
                      </div>
                   </Link>
-                  <div className="header-button setting--btn">
+                  {/* <div className="header-button setting--btn">
                      <svg
                         width="25"
                         height="25"
@@ -68,7 +72,7 @@ const Header = () => {
                            fill="white"
                         />
                      </svg>
-                  </div>
+                  </div> */}
                </div>
             </div>
          </div>

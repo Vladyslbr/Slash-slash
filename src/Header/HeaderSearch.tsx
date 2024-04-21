@@ -40,6 +40,7 @@ function HeaderSearch() {
          if (
             event.key === "/" &&
             document.activeElement?.tagName !== "INPUT" &&
+            document.activeElement?.tagName !== "TEXTAREA" &&
             !isContentElement
          ) {
             event.preventDefault();

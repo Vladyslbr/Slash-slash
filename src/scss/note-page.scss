@@ -147,4 +147,18 @@
     //     line-height: normal !important;
     //   }
     // }
+
+    @media (max-width: $mobile-view-width) {
+        &__wrapper-note {
+            width: 90vw;
+            // height: 100%;
+            // margin: 40px auto;
+        }
+
+        .note-top-menu {
+            display: flex !important;
+            flex-direction: initial !important;
+            justify-content: space-between !important;
+        }
+    }
 }
