@@ -99,7 +99,12 @@ export const NoteContainer: React.FC<NoteContainerProps> = ({
                            {noteDate(note.created, note.edited)}
                            <div
                               onClick={() =>
-                                 dispatch(patchNote({ id, bin: !note.bin }))
+                                 dispatch(
+                                    patchNote({
+                                       id,
+                                       bin: !note.bin,
+                                    }),
+                                 )
                               }
                               className="note-container-btn-restore"
                            >
@@ -146,7 +151,12 @@ export const NoteContainer: React.FC<NoteContainerProps> = ({
                            {noteDate(note.created, note.edited)}
                            <div
                               onClick={() =>
-                                 dispatch(patchNote({ id, bin: !note.bin }))
+                                 dispatch(
+                                    patchNote({
+                                       id,
+                                       bin: !note.bin,
+                                    }),
+                                 )
                               }
                               className="note-container-btn-bin"
                            >
@@ -177,3 +187,5 @@ export const NoteContainer: React.FC<NoteContainerProps> = ({
       );
    }
 };
+
+export * from "./NoteContainerSkeleton";

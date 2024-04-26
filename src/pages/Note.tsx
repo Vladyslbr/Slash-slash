@@ -36,7 +36,9 @@ function Note() {
             setDeleted(true);
          } else {
             // If note is not in bin, move it to bin
-            dispatch(patchNote({ id: selectedNote.id, bin: !selectedNote.bin }));
+            dispatch(
+               patchNote({ id: selectedNote.id, bin: !selectedNote.bin }),
+            );
          }
       }
    };

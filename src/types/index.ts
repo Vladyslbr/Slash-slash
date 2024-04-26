@@ -55,11 +55,11 @@ export type SortItemType = {
     sortProp1: "created";
     sortProp2: "asc";
 } | {
-    name: "modified-ascending";
+    name: "edited-ascending";
     sortProp1: "edited";
     sortProp2: "asc";
 } | {
-    name: "modified-descending";
+    name: "edited-descending";
     sortProp1: "edited";
     sortProp2: "desc";
 };

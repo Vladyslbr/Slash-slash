@@ -15,7 +15,7 @@ type MakeUrlType = {
 export const makeUrl = ({sort, category, searchValue, bin, dispatch}: MakeUrlType) => {
     let newURL;
     newURL = `_sort=${sort.sortProp1}&_order=${sort.sortProp2}`;
-    newURL = newURL + "&bin=" + bin.toString();
+    //newURL = newURL + "&bin=" + bin.toString();
     newURL = category ? newURL + `&tags_like=${category}` : newURL;
     newURL = searchValue
        ? newURL + `&text_like=${searchValue.toLowerCase()}`
@@ -39,3 +39,5 @@ export const makeParse = (dispatch: AppDispatch) => {
        dispatch(setSearchValue(foundSearch));
     };
 };
+
+export * from "./msgDictionary";

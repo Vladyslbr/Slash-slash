@@ -21,7 +21,7 @@ function HeaderSearch() {
    };
 
    // eslint-disable-next-line react-hooks/exhaustive-deps
-   const debounceSearchValue = React.useCallback(
+   const _debounceSearchValue = React.useCallback(
       debounce((val: string) => {
          dispatch(setSearchValue(val));
       }, 250),
@@ -30,7 +30,7 @@ function HeaderSearch() {
 
    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
       setSearchInput(event.target.value);
-      debounceSearchValue(event.target.value);
+      _debounceSearchValue(event.target.value);
    };
 
    React.useEffect(() => {

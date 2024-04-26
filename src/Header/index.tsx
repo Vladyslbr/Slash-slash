@@ -1,26 +1,37 @@
 import React from "react";
 
-//import logo from "../assets/images/slash-logo.svg";
+import logo from "../resources/assets/slash-logo.svg";
+
 import { Link } from "react-router-dom";
 import HeaderSearch from "./HeaderSearch";
+import { msgDictionary } from "../utils";
 
 const Header = () => {
+   const [messages] = React.useState(msgDictionary);
+   const [currentMessageIndex, setCurrentMessageIndex] = React.useState(0);
+
+   // Call updateCurrentMessage when the component mounts
+   React.useEffect(() => {
+      // Function to update the current message based on the current day
+      const _updateCurrentMessage = () => {
+         const currentDate = new Date();
+         const dayOfMonth = currentDate.getDate();
+         const newIndex = dayOfMonth % messages.length;
+         setCurrentMessageIndex(newIndex);
+      };
+      _updateCurrentMessage();
+   }, [messages]);
+
    return (
       <header className="header">
          <div className="header__wrapper">
             <Link to="/">
-               <div
-                  className="header__wrapper-logo-message"
-               >
+               <div className="header__wrapper-logo-message">
                   <div className="header-logo">
-                     {/* <img src={logo} alt="" className="logo" /> */}
-                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.7381 0H7.44048H7.14286H6.84524H6.54762L0 25H0.595252H0.892857H1.19048H2.38097H2.97619H4.16667L10.7143 0H10.119H9.52381H8.92857H8.33333H7.7381Z" fill="#42F2F7"/>
-<path d="M22.0238 0H21.7262H21.4286H21.1309H20.8333L14.2857 25H14.881H15.1786H15.4762H16.6667H17.2619H18.4524L25 0H24.4048H23.8095H23.2143H22.619H22.0238Z" fill="#42F2F7"/>
-</svg>
+                     <img src={logo} alt="slash-slash logo" className="logo" />
                   </div>
                   <div className="header-message">
-                     <p>Local-storage notes</p>
+                     <p>{messages[currentMessageIndex]}</p>
                   </div>
                </div>
             </Link>
@@ -59,6 +70,27 @@ const Header = () => {
                         </svg>
                      </div>
                   </Link>
+                  <a
+                     href="https://github.com/Vladyslbr/Slash-slash"
+                     title="github slash-slash open-source project link"
+                  >
+                     <div className="header-button github-btn">
+                        <svg
+                           width="25"
+                           height="25"
+                           viewBox="0 0 25 25"
+                           fill="none"
+                           xmlns="http://www.w3.org/2000/svg"
+                        >
+                           <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12.5103 0C5.59245 0 0 5.63367 0 12.6033C0 18.1745 3.58327 22.8904 8.55422 24.5595C9.17572 24.685 9.40337 24.2883 9.40337 23.9546C9.40337 23.6625 9.38289 22.6609 9.38289 21.6174C5.90281 22.3688 5.17812 20.115 5.17812 20.115C4.61885 18.6544 3.79018 18.279 3.79018 18.279C2.65116 17.5069 3.87315 17.5069 3.87315 17.5069C5.13663 17.5904 5.79961 18.8006 5.79961 18.8006C6.9179 20.7201 8.7199 20.1778 9.44486 19.8438C9.54831 19.03 9.87993 18.4667 10.232 18.1537C7.45642 17.8616 4.53613 16.7766 4.53613 11.9355C4.53613 10.5583 5.03292 9.43154 5.8201 8.55525C5.6959 8.24232 5.26083 6.94837 5.94455 5.21653C5.94455 5.21653 7.00087 4.8826 9.38263 6.51022C10.4023 6.23434 11.454 6.094 12.5103 6.09282C13.5667 6.09282 14.6435 6.23904 15.6378 6.51022C18.0198 4.8826 19.0761 5.21653 19.0761 5.21653C19.7599 6.94837 19.3245 8.24232 19.2003 8.55525C20.0083 9.43154 20.4846 10.5583 20.4846 11.9355C20.4846 16.7766 17.5643 17.8406 14.7679 18.1537C15.2237 18.5502 15.6171 19.3012 15.6171 20.4907C15.6171 22.1808 15.5966 23.5372 15.5966 23.9544C15.5966 24.2883 15.8245 24.685 16.4457 24.5597C21.4167 22.8901 24.9999 18.1745 24.9999 12.6033C25.0204 5.63367 19.4075 0 12.5103 0Z"
+                              fill="white"
+                           />
+                        </svg>
+                     </div>
+                  </a>
                   {/* <div className="header-button setting--btn">
                      <svg
                         width="25"

@@ -3,7 +3,6 @@ export * from "./Categories";
 export * from "./Content";
 export * from "./Editor";
 export * from "./NoteContainer";
-export * from "./NoteContainer/NoteContainerSkeleton";
 export * from "./SortTopBar";
 export * from "./Tag";
 export * from "./TopMenu";

@@ -6,7 +6,6 @@ import { Tooltip } from "react-tooltip";
 import { checkTagDuplicate } from "../../redux/data/utils";
 import { patchTag, postTag } from "../../redux/data/base";
 
-
 type SubmitTagProps = {
    addTagObj?: AddTagObj;
    editTagObj?: EditTagObj;
@@ -51,7 +50,10 @@ export const SubmitTag: React.FC<SubmitTagProps> = ({
             if (addTagObj) {
                dispatch(checkTagDuplicate(inputTag, addTagObj.noteId)); // to check for a tooltip
                dispatch(
-                  postTag({ tagName: inputTag, noteId: addTagObj.noteId }),
+                  postTag({
+                     tagName: inputTag,
+                     noteId: addTagObj.noteId,
+                  }),
                );
                resetInputFields(addTagObj.noteId);
             } else if (editTagObj) {

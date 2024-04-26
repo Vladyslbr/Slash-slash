@@ -3,12 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../redux/store";
 import "../scss/main.scss";
-import {
-   Content,
-   AddNoteBtn,
-   SortTopBar,
-   Categories,
-} from "../components";
+import { Content, AddNoteBtn, SortTopBar, Categories } from "../components";
 import ErrorPage from "./ErrorPage";
 import { selectData } from "../redux/data/selectors";
 import { selectFilter } from "../redux/filter/selectors";
@@ -17,7 +12,6 @@ import { getData } from "../redux/data/base";
 import { makeParse, makeUrl } from "../utils";
 
 const Home = () => {
-
    // Redux setup
    const dispatch = useAppDispatch();
    const { error } = useSelector(selectData);

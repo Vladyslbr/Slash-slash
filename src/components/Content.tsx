@@ -11,25 +11,36 @@ type ContentProps = {
 
 export const Content: React.FC<ContentProps> = ({ noteType = "" }) => {
    const { notes, status } = useSelector(selectData);
+   const [showSkeleton, setShowSkeleton] = React.useState(false);
+
+   React.useEffect(() => {
+      if (status === Status.LOADING) {
+         var timer = setTimeout(() => {
+            setShowSkeleton(true);
+         }, 1000);
+      }
+      if (status === Status.SUCCESS) {
+         setShowSkeleton(false);
+      }
+
+      return () => clearTimeout(timer);
+   }, [status]);
 
    return (
       <div className="notes-content">
-         {status === Status.LOADING
-            // ? [...new Array(6)].map((_, index) => (
-            //      <NoteContainerSkeleton key={index} />
-            //   ))
-            ? <></>
-            : status === Status.SUCCESS
-              ? notes.map((note: NoteType) => (
-                   <NoteContainer
-                      key={note.id}
-                      id={note.id}
-                      noteType={noteType}
-                      initialTagsLimit={2}
-                      finalTagsLimit={20}
-                   />
-                ))
-              : ""}
+         {showSkeleton
+            ? [...new Array(6)].map((_, index) => (
+                 <NoteContainerSkeleton key={index} />
+              ))
+            : notes.map((note: NoteType) => (
+                 <NoteContainer
+                    key={note.id}
+                    id={note.id}
+                    noteType={noteType}
+                    initialTagsLimit={6}
+                    finalTagsLimit={30}
+                 />
+              ))}
       </div>
    );
 };

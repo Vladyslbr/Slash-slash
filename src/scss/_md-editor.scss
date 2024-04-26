@@ -44,6 +44,10 @@
         height: 100% !important;
     }
 
+    &-show-preview &-preview {
+        position:inherit;
+    }
+
     @media (max-width: $mobile-view-width) {
         width: 90vw;
     }
